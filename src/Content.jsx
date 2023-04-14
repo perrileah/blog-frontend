@@ -7,6 +7,7 @@ import { Modal } from "./Modal";
 import { PostsShow } from "./PostsShow";
 
 export function Content() {
+  <div className="container"></div>;
   const [posts, setPosts] = useState([]);
   const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
   const [currentPost, setCurrentPost] = useState({});

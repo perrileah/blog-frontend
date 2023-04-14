@@ -5,3 +5,12 @@
 html {
   scroll-behavior: smooth;
 }
+
+#root {
+  font-family: Arial Rounded MT Bold,Helvetica Rounded,Arial,sans-serif;  
+}
+
+body {
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/y-so-serious-white.png");
+}
+

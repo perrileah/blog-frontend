@@ -3,9 +3,22 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { PostsNew } from "./PostsNew";
 import { PostsIndex } from "./PostsIndex";
+import { Modal } from "./Modal";
+import { PostsShow } from "./PostsShow";
 
 export function Content() {
   const [posts, setPosts] = useState([]);
+  const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
+  const [currentPost, setCurrentPost] = useState({});
+
+  const handleShowPost = (post) => {
+    setIsPostsShowVisible(true);
+    setCurrentPost(post);
+  };
+
+  const handleClose = () => {
+    setIsPostsShowVisible(false);
+  };
 
   const handleIndexPosts = () => {
     axios.get("http://localhost:3000/posts.json").then((response) => {
@@ -19,8 +32,10 @@ export function Content() {
   return (
     <div>
       <PostsNew />
-      <button onClick={handleIndexPosts}>Load Posts</button>
-      <PostsIndex posts={posts} />
+      <PostsIndex posts={posts} onShowPost={handleShowPost} />
+      <Modal show={isPostsShowVisible} onClose={handleClose}>
+        <PostsShow post={currentPost} />
+      </Modal>
     </div>
   );
 }

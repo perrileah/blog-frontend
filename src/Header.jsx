@@ -1,4 +1,18 @@
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { LogoutLink } from "./LogoutLink";
+
 export function Header() {
+  const [isSignupVisible, setIsSignupVisible] = useState(false);
+
+  const handleSignupShow = () => {
+    setIsSignupVisible(false);
+  };
+
+  const handleSignupClose = () => {
+    setIsSignupVisible(false);
+  };
+
   return (
     <div>
       <header>
@@ -74,7 +88,8 @@ export function Header() {
             </div>
           </div>
         </nav>
-        <a href="#">Home</a> | <a href="#posts-index">All posts</a> | <a href="#posts-new">New post</a>
+        <Link to="/">Home</Link> |<Link to="/about">About</Link> |<Link to="/posts">All posts</Link>|{" "}
+        <Link to="/postsnew">New post</Link> |<Link to="/login">Login</Link> | <LogoutLink />
       </header>
     </div>
   );

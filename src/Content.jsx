@@ -10,6 +10,7 @@ import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
 import { Routes, Route } from "react-router-dom";
 import { About } from "./About";
+import { PostsShowPage } from "./PostsShowPage";
 
 export function Content() {
   <div className="container"></div>;
@@ -70,6 +71,7 @@ export function Content() {
         <Route path="/login" element={<Login />} />
         <Route path="/postsnew" element={<PostsNew onCreatePost={handleCreatePost} />} />
         <Route path="/posts" element={<PostsIndex posts={posts} onShowPost={handleShowPost} />} />
+        <Route path="/posts/:id" element={<PostsShowPage posts={posts} onShowPost={handleShowPost} />} />
       </Routes>
       <Modal show={isPostsShowVisible} onClose={handleClose}>
         <PostsShow post={currentPost} onUpdatePost={handleUpdatePost} />

@@ -89,8 +89,15 @@ export function Header() {
           </div>
         </nav>
         <Link to="/">Home</Link> |<Link to="/about">About</Link> |<Link to="/posts">All posts</Link>|{" "}
-        <Link to="/postsnew">New post</Link> | <Link to="/signup">Signup</Link> | <Link to="/login">Login</Link> |{" "}
-        <LogoutLink />
+        <Link to="/postsnew">New post</Link> |
+        {localStorage.jwt === undefined ? (
+          <>
+            <a href="/signup"> Signup |</a>
+            <a href="/login"> Login </a>
+          </>
+        ) : (
+          <LogoutLink />
+        )}
       </header>
     </div>
   );

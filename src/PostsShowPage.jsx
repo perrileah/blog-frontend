@@ -8,7 +8,7 @@ export function PostsShowPage() {
   const params = useParams();
 
   const handleShowPost = () => {
-    axios.get("http://localhost:3000/posts/${params.id}.json").then((response) => {
+    axios.get(`http://localhost:3000/posts/${params.id}.json`).then((response) => {
       setPost(response.data);
     });
   };
@@ -16,10 +16,17 @@ export function PostsShowPage() {
   useEffect(handleShowPost, []);
 
   return (
-    <div>
-      <h2>{post.title}</h2>
-      <img src={post.image} alt="image link" />
-      <p>{post.body}</p>
+    <div id="posts-show">
+      <h1>Post Info</h1>
+      <div>
+        <h2>Title: {post.title}</h2>
+      </div>
+      <div>
+        <img src={post.image} alt="image link" />
+      </div>
+      <div>
+        <p>{post.body}</p>
+      </div>
     </div>
   );
 }

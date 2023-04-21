@@ -57,7 +57,10 @@ export function Content() {
   };
 
   const handleDestroyPost = (post) => {
-    axios.delete("http://localhost:3000/posts/" + id + ".json", params);
+    axios.delete("http://localhost:3000/posts/" + post.id + ".json").then((response) => {
+      setPosts(posts.filter((r) => r.id !== post.id));
+      handleClose();
+    });
   };
 
   useEffect(handleIndexPosts, []);
@@ -74,7 +77,7 @@ export function Content() {
         <Route path="/posts/:id" element={<PostsShowPage posts={posts} onShowPost={handleShowPost} />} />
       </Routes>
       <Modal show={isPostsShowVisible} onClose={handleClose}>
-        <PostsShow post={currentPost} onUpdatePost={handleUpdatePost} />
+        <PostsShow post={currentPost} onUpdatePost={handleUpdatePost} onDestroyPost={handleDestroyPost} />
       </Modal>
     </div>
   );
